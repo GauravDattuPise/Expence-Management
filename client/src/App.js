@@ -8,7 +8,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={
+              <ProtectedRoutes>
               <HomePage />
+              </ProtectedRoutes>
           }
         />
         <Route path="/register" element={<Register />} />

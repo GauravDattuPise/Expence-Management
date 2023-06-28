@@ -16,7 +16,12 @@ app.use(express.json());
 app.use(cors());
 
 //routes
+
+//user routes
 app.use("/api/v1/users", require("./routes/userRoute"));
+
+//transections routes
+app.use("/api/v1/transections", require("./routes/transectionRoutes"));
 
 //port
 const PORT = 5000 || process.env.PORT;
