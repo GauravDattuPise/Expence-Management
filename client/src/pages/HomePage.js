@@ -17,6 +17,8 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [allTransection, setAllTransection] = useState([]);
+
+  // state for days
   const [frequency, setFrequency] = useState("7");
   const [selectedDate, setSelectedate] = useState([]);
   const [type, setType] = useState("all");
@@ -84,7 +86,7 @@ const HomePage = () => {
         setAllTransection(res.data);
         setLoading(false);
       } catch (error) {
-        message.error("Ftech Issue With Tranction");
+        message.error("Fetech Issue With Tranction");
       }
     };
     getAllTransactions();
@@ -143,7 +145,7 @@ const HomePage = () => {
       {loading && <Spinner />}
       <div className="filters">
         <div>
-          <h6>Select Frequency</h6>
+          <h5>Select Frequency</h5>
           <Select value={frequency} onChange={(values) => setFrequency(values)}>
             <Select.Option value="7">LAST 1 Week</Select.Option>
             <Select.Option value="30">LAST 1 Month</Select.Option>
@@ -158,7 +160,7 @@ const HomePage = () => {
           )}
         </div>
         <div className="filter-tab ">
-          <h6>Select Type</h6>
+          <h5>Select Type</h5>
           <Select value={type} onChange={(values) => setType(values)}>
             <Select.Option value="all">ALL</Select.Option>
             <Select.Option value="income">INCOME</Select.Option>
@@ -186,6 +188,8 @@ const HomePage = () => {
           </button>
         </div>
       </div>
+
+      {/* content of table */}
       <div className="content">
         {viewData === "table" ? (
           <Table columns={columns} dataSource={allTransection} />
@@ -193,6 +197,7 @@ const HomePage = () => {
           <Analytics allTransection={allTransection} />
         )}
       </div>
+
       <Modal
         title={editable ? "Edit Transaction" : "Add Transection"}
         open={showModal}

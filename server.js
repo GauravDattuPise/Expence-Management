@@ -21,6 +21,7 @@ app.use(cors());
 //routes
 //user routes
 app.use("/api/v1/users", require("./routes/userRoute"));
+
 //transections routes
 app.use("/api/v1/transections", require("./routes/transectionRoutes"));
 

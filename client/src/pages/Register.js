@@ -1,66 +1,3 @@
-// import React, { useState, useEffect } from "react";
-// import { Form, Input, message } from "antd";
-// import { Link, useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import Spinner from "../components/Spinner";
-// import Layout from "../components/layout/Layout";
-
-// const Register = () => {
-//     const navigate = useNavigate();
-//     const [loading, setLoading] = useState(false);
-//     //from submit
-//     const submitHandler = async (values) => {
-//         try {
-//             setLoading(true);
-//             await axios.post("/users/register", values);
-//             message.success("Registeration Successfull");
-//             setLoading(false);
-//             navigate("/login");
-//         } catch (error) {
-//             setLoading(false);
-//             message.error("something went wrong");
-//         }
-//     };
-
-//     //prevent for login user
-//     useEffect(() => {
-//         if (localStorage.getItem("user")) {
-//             navigate("/");
-//         }
-//     }, [navigate]);
-//     return (
-//         <Layout>
-//             <div className="resgister-page ">
-//                 {loading && <Spinner />}
-//                 <Form layout="vertical" onFinish={submitHandler}>
-//                     <h1>Register Form</h1>
-//                     <Form.Item label="Name" name="name">
-//                         <Input />
-//                     </Form.Item>
-//                     <Form.Item label="Email" name="email">
-//                         <Input type="email" />
-//                     </Form.Item>
-//                     <Form.Item label="Password" name="password">
-//                         <Input type="password" />
-//                     </Form.Item>
-//                     <div className="d-flex justify-content-between">
-//                         <Link to="/login">Already Register ? Cleck Here to login</Link>
-//                         <button className="btn btn-primary">Resgiter</button>
-//                     </div>
-//                 </Form>
-//             </div>
-//         </Layout>
-//     );
-// };
-
-// export default Register;
-
-
-
-
-
-
-
 
 import React, { useState, useEffect } from "react";
 import { Form, Input, message } from "antd";
@@ -72,14 +9,21 @@ import "../styles/RegisterPage.css";
 const Register = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  //from submit
+
+  //form submit
   const submitHandler = async (values) => {
     try {
+
+      // sending values to backend from form
       setLoading(true);
       await axios.post("/api/v1/users/register", values);
+
       message.success("Registeration Successfull");
+
+      // on successfull registration sending to login page
       setLoading(false);
       navigate("/login");
+
     } catch (error) {
       setLoading(false);
       message.error("something went wrong");
@@ -94,27 +38,36 @@ const Register = () => {
   }, [navigate]);
   return (
     <>
+
+      {/* if loading is true show spinner */}
       <div className="register-page ">
         {loading && <Spinner />}
-        <Form
-          className="register-form"
-          layout="vertical"
-          onFinish={submitHandler}
-        >
+
+        <Form className="register-form" layout="vertical" onFinish={submitHandler} >
+
           <h2>Register Form</h2>
+
+          {/* name input */}
           <Form.Item label="Name" name="name">
             <Input type="text" required />
           </Form.Item>
+
+          {/* email input */}
           <Form.Item label="Email" name="email">
             <Input type="email" required />
           </Form.Item>
+
+          {/* password input */}
           <Form.Item label="Password" name="password">
             <Input type="password" required />
           </Form.Item>
+
+          {/* register button */}
           <div className="d-flex justify-content-between">
             <Link to="/login">Already Register? login here!</Link>
             <button className="btn ">Register</button>
           </div>
+
         </Form>
       </div>
     </>
