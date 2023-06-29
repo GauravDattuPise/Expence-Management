@@ -2,18 +2,18 @@ const mongoose = require("mongoose");
 
 const transectionSchema = new mongoose.Schema(
   {
-    // userid: {
-    //   type: String,
-    //   required: true,
-    // },
+    userid: {
+      type: String,
+      required: true,
+    },
     amount: {
       type: Number,
       required: [true, "amount is required"],
     },
-    // type: {
-    //   type: String,
-    //   required: [true, "type is required"],
-    // },
+    type: {
+      type: String,
+      required: [true, "type is required"],
+    },
     category: {
       type: String,
       requires: [true, "cat is required"],
