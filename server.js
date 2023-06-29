@@ -15,7 +15,7 @@ const app = express();
 
 //middlewares
 app.use(morgan("dev"));
-app.use(express.json()); 
+app.use(express.json());
 app.use(cors());
 
 //routes
@@ -32,9 +32,9 @@ app.get("*", function (req, res) {
 });
 
 //port 
-const PORT = 5000 || process.env.PORT; 
+const PORT = 5000 || process.env.PORT;
 
 //listen server
-app.listen(PORT, () => { 
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
