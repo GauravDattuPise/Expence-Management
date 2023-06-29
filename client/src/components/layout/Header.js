@@ -19,7 +19,7 @@ const Header = () => {
   };
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg" style={{background : "#7b6f673d"}}>
         <div className="container-fluid">
           <button
             className="navbar-toggler"
@@ -34,14 +34,14 @@ const Header = () => {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <Link className="navbar-brand" to="/">
-              Expense Management
+              <h3 style={{color : "blue"}}>Expense Management</h3>
             </Link>
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 {" "}
-                <p className="nav-link">{loginUser && loginUser.name}</p>{" "}
+                <p className="nav-link" style={{marginRight : "40px", fontSize : "20px", text : "bold"}}>{loginUser && loginUser.name}</p>{" "}
               </li>
-              <li className="nav-item">
+              <li className="nav-item" style={{marginTop : "10px", marginRight : "20px"}}>
                 <button className="btn btn-primary" onClick={logoutHandler}>
                   Logout
                 </button>
